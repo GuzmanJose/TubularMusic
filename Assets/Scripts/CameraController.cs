@@ -17,4 +17,8 @@ public class CameraController : MonoBehaviour {
 	void LateUpdate () {
 		transform.position = player.transform.position + offset;
 	}
+
+	public void alarm () {
+		Debug.Log ("Alarm");
+	}
 }

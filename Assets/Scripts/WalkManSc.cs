@@ -20,15 +20,12 @@ public class WalkManSc : MonoBehaviour {
 		allSongs = GetComponents <AudioSource> ();
 		staticSound = allSongs[0];
 		song1 = allSongs[1];
-		song2 = allSongs[2];
-		song3 = allSongs[3];
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		volume = Mathf.Clamp (CassetteSC.volume, 0f,1f);
-		staticSound.volume = volume;
-		song1.volume = volume;
+
 
 	}
 
@@ -46,25 +43,31 @@ public class WalkManSc : MonoBehaviour {
 		else if (!musicOn && song1.isPlaying == true) {
 			song1.Pause();
 		}
-		if (musicOn && song2.isPlaying == false && songName == "song2") {
-			song2.Play();
-		}
-		else if (!musicOn && song2.isPlaying == true) {
-			song2.Pause();
-		}
-		if (musicOn && song3.isPlaying == false && songName == "song3") {
-			song3.Play();
-		}
-		else if (!musicOn && song3.isPlaying == true) {
-			song3.Pause();
-		}
+//		if (musicOn && song2.isPlaying == false && songName == "song2") {
+//			song2.Play();
+//		}
+//		else if (!musicOn && song2.isPlaying == true) {
+//			song2.Pause();
+//		}
+//		if (musicOn && song3.isPlaying == false && songName == "song3") {
+//			song3.Play();
+//		}
+//		else if (!musicOn && song3.isPlaying == true) {
+//			song3.Pause();
+//		}
 		
 	}
 
 	public void PlayJam(string song){
 		if (song == "song1") {
+			song1.loop = false;
 			song1.Play();
 
+		}
+	}
+	public void StopJam() {
+		foreach (var item in allSongs) {
+			item.Pause ();
 		}
 	}
 
